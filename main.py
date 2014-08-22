@@ -7,7 +7,7 @@ import json
 
 class AbstractPageHandler(RequestHandler):
     DATA_FILE = 'dataset.csv'
-    API_DATA = readdata(filename=DATA_FILE)
+
 
 
 class HomeHandler(AbstractPageHandler):
@@ -43,10 +43,11 @@ class APIHandler(AbstractPageHandler):
         - api?showcols=Symbol,LowPx,TradeCount
         - or a combination of any of these
         """
+        API_DATA = readdata(filename=self.DATA_FILE)
         before = TS_to_date(self.request.get('before', ''))
         after = TS_to_date(self.request.get('after', ''))
         cols = self.request.get('showcols', '')
-        data = date_compare(self.API_DATA,
+        data = date_compare(API_DATA,
                             after_date=after,
                             before_date=before)
         data = [conform_output_data(d,cols) for d in data]
