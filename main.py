@@ -15,6 +15,9 @@ class HomeHandler(AbstractPageHandler):
     def get(self):
         HOMEPAGE_HTML = 'A simple JSON API based on a CSV file.' \
                 '<ul><li><a href="/api">The JSON API</a></li>' \
+                '<li><a href="/api?before=2014-01-13">The JSON API with a date filter</a></li>' \
+                '<li><a href="/api?before=2014-01-13&after=2010-02-20">The JSON API with 2 date filters</a></li>' \
+                '<li><a href="/api?showcols=Symbol,LowPx,TradeCount">The JSON API showing only some fields</a></li>' \
                 '<li><a href="/csv">Download the CSV</a></li>' \
                 '<li><a href="https://github.com/julzhk/simple_api">The code (github)</a></li>' \
                 '</ul>'
